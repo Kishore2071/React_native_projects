@@ -21,19 +21,46 @@
 
 
 import React from "react";
-import { StyleSheet,View, Text, Image } from "react-native";
+import { StyleSheet,View, Text, Image,TouchableOpacity } from "react-native";
 import SomeText from "./components/SomeText";
 
 export default class App extends React.Component{
+
+  state={
+    text:"Logged out",
+    ex:"as"
+  };
+
   render() {
     return (
 
       <View style={styles.classname}>
-        <SomeText name="Hello"/>
-        <SomeText name="World"/>
-        <SomeText name="HI"/>
-        <Image source={require("./assets/instagram.png")} style={{height:100 , width:100}}/>
-        <Image source={{uri:"https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"}} style={{height:100 , width:100}}/>
+
+        <TouchableOpacity 
+          onPress={() => {
+            this.setState({
+              text:"Logged in"
+            });
+          }}
+          >
+          <SomeText name="Login"/>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={ ()=> {
+            this.setState({
+              text:"Logged out"
+            });
+          }}
+          >
+          <SomeText name="Logout"/>
+        </TouchableOpacity>
+
+        <Text style={{color:"white",fontSize:20,marginTop:10}}>
+          {this.state.text}
+        </Text>
+
+
       </View>
 
     );
@@ -43,7 +70,7 @@ export default class App extends React.Component{
 const styles = StyleSheet.create({
   classname: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
       },
