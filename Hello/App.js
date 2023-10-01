@@ -21,18 +21,28 @@
 
 
 import React from "react";
-import { View, Text } from "react-native";
+import { StyleSheet,View, Text } from "react-native";
+import SomeText from "./components/SomeText";
 
 export default class App extends React.Component{
   render() {
     return (
-      
-      <View>
-        <Text>Hello World</Text>
-        <Text>Hello World</Text>
-        <Text>Hello World</Text>
+
+      <View style={styles.classname}>
+        <SomeText/>
+        <SomeText/>
+        <SomeText/>
       </View>
 
     );
   }
 }
+
+const styles = StyleSheet.create({
+  classname: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+});
