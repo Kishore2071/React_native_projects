@@ -4,7 +4,7 @@ import { StyleSheet, Text } from "react-native";
 export default class SomeText extends React.Component{
   render() {
 
-    return <Text style={styles.textstyle}>Hello World</Text>;
+    return <Text style={styles.textstyle}>{this.props.name}</Text>;
 
   }
 }

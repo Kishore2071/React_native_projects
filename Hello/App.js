@@ -21,7 +21,7 @@
 
 
 import React from "react";
-import { StyleSheet,View, Text } from "react-native";
+import { StyleSheet,View, Text, Image } from "react-native";
 import SomeText from "./components/SomeText";
 
 export default class App extends React.Component{
@@ -29,9 +29,11 @@ export default class App extends React.Component{
     return (
 
       <View style={styles.classname}>
-        <SomeText/>
-        <SomeText/>
-        <SomeText/>
+        <SomeText name="Hello"/>
+        <SomeText name="World"/>
+        <SomeText name="HI"/>
+        <Image source={require("./assets/instagram.png")} style={{height:100 , width:100}}/>
+        <Image source={{uri:"https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"}} style={{height:100 , width:100}}/>
       </View>
 
     );

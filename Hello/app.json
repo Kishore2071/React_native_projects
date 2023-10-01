@@ -4,10 +4,10 @@
     "slug": "Hello",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/instagram.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/instagram.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
