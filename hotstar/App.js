@@ -7,7 +7,11 @@ export default class App extends React.Component {
   render(){
     return (
       <Main>
-        <Sometext>Opening App.js to start working on your app!</Sometext>
+        <StatusBar hidden/>
+        <Header>
+          <Logo>Hotstar</Logo>
+          <Profile />
+        </Header>
       </Main>
     );
   }
@@ -15,12 +19,29 @@ export default class App extends React.Component {
 
 const Main = styled.View`
   flex: 1;
-  background-color: 'lightgray';
-  align-items: 'center';
-  justify-content: 'center';
+  background-color: #E5E5E5;
+
 `;
 
-const Sometext = styled.Text`
-  margin-top:100px;
-  font-size:20px;
+const Header = styled.View`
+  height: 56px;
+  width: 100%;
+  background-color: #FFF;
+`;
+
+const Profile = styled.Image`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  background: #D9D9D9;
+  border-radius: 20px;
+`;
+
+const Logo = styled.Text`
+  margin-top: 10px;
+  margin-left: 10px;
+  color: black;
+  font-size: 25px;
 `;
