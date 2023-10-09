@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import styled from "styled-components";
+import styled from "styled-components"
+import BigCard from './components/BigCard';
 
 export default class App extends React.Component {
   render(){
@@ -12,6 +13,7 @@ export default class App extends React.Component {
           <Logo>Hotstar</Logo>
           <Profile />
         </Header>
+        <BigCard />
       </Main>
     );
   }
@@ -31,7 +33,7 @@ const Header = styled.View`
 
 const Profile = styled.Image`
   position: absolute;
-  top: 5px;
+  top: 7px;
   right: 5px;
   width: 40px;
   height: 40px;
