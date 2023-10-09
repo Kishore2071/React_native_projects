@@ -8,8 +8,8 @@ export default class BigCard extends React.Component {
 }
 
 const Container = styled.View`
-    width: 368px;
-    height: 206px;
+    width: 338px;
+    height: 180px;
     border-radius: 10px;
     background-color: white;
 `;

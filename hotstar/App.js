@@ -13,7 +13,9 @@ export default class App extends React.Component {
           <Logo>Hotstar</Logo>
           <Profile />
         </Header>
-        <BigCard />
+        <BigCardContainer>
+          <BigCard />
+        </BigCardContainer>
       </Main>
     );
   }
@@ -46,4 +48,9 @@ const Logo = styled.Text`
   margin-left: 10px;
   color: black;
   font-size: 25px;
+`;
+
+const BigCardContainer = styled.View`
+  margin-top: 20px;
+  margin-left: 20px;
 `;
