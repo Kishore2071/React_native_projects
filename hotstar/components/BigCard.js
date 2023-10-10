@@ -5,7 +5,10 @@ export default class BigCard extends React.Component {
     render(){
         return (
             <Container>
-                <Image source={{ uri : "https://frankeey.com/image/course/KXineZ1NFtQnHFq07QI8ndjzxD5ouTGu4r9S4Zwg.jpg"}}/>
+                <Image 
+                    source={{ 
+                        uri : this.props.image
+                    }}/>
             </Container>
         );
     }
@@ -17,6 +20,7 @@ const Container = styled.View`
     border-radius: 10px;
     background-color: white;
     overflow: hidden;
+    margin-left: 20px;
 `;
 
 const Image = styled.Image`

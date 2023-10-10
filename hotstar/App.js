@@ -14,10 +14,12 @@ export default class App extends React.Component {
             <Profile />
           </Header>
           <BigCardContainer>
-            <BigCard />
-            <BigCard />
-            <BigCard />
-            <BigCard />
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <BigCard image="https://frankeey.com/image/course/KXineZ1NFtQnHFq07QI8ndjzxD5ouTGu4r9S4Zwg.jpg"/>
+              <BigCard image="https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg"/>
+              <BigCard image="https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"/>
+              <BigCard image="https://frankeey.com/image/course/QfIUfKnqRifDfegQewlKTAZQiFWIIkwobqQ90YKL.jpg"/>
+            </ScrollView>
           </BigCardContainer>
         </ScrollView>
       </Main>
@@ -56,5 +58,4 @@ const Logo = styled.Text`
 
 const BigCardContainer = styled.View`
   margin-top: 20px;
-  margin-left: 20px;
 `;
