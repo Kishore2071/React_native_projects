@@ -15,10 +15,17 @@ export default class App extends React.Component {
           </Header>
           <BigCardContainer>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              <BigCard image="https://frankeey.com/image/course/KXineZ1NFtQnHFq07QI8ndjzxD5ouTGu4r9S4Zwg.jpg"/>
-              <BigCard image="https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg"/>
-              <BigCard image="https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"/>
-              <BigCard image="https://frankeey.com/image/course/QfIUfKnqRifDfegQewlKTAZQiFWIIkwobqQ90YKL.jpg"/>
+              
+              {
+                BigCardData.map(
+                
+                (data,index)=>( 
+                  <BigCard key={index} image={data.image} />
+                  )
+                )
+              }
+              
+
             </ScrollView>
           </BigCardContainer>
         </ScrollView>
@@ -59,3 +66,28 @@ const Logo = styled.Text`
 const BigCardContainer = styled.View`
   margin-top: 20px;
 `;
+
+const BigCardData =[
+
+  {
+
+    image: "https://frankeey.com/image/course/KXineZ1NFtQnHFq07QI8ndjzxD5ouTGu4r9S4Zwg.jpg"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/QfIUfKnqRifDfegQewlKTAZQiFWIIkwobqQ90YKL.jpg"
+
+  },
+  
+];
