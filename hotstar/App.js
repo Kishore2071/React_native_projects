@@ -22,6 +22,7 @@ export default class App extends React.Component {
                 (data,index)=>( 
                   <BigCard key={index} image={data.image} />
                   )
+                  
                 )
               }
               
