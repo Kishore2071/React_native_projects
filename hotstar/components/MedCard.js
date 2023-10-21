@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons"
 
 class MedCard extends React.Component{
     render(){
@@ -17,8 +18,11 @@ class MedCard extends React.Component{
                             top: 70
                         }
                     }
-                />      
-                <Text>Some Text</Text>      
+                />     
+                <TextContainer>
+                    <Ionicons name="play" color="white" size={18}/> 
+                    <Text>Website course</Text>   
+                </TextContainer>   
             </Container>
         )
     }
@@ -42,10 +46,16 @@ const Image = styled.Image`
 `;
 
 const Text = styled.Text`
-    position: absolute;
     font-size: 18px;
     font-weight: 500;
     color: white;
-    top: 100;
-    left: 15;
+    padding-left:10px;
+`;
+
+const TextContainer = styled.View`
+    position: absolute;
+    top: 100px;
+    left: 15px;
+    flex-direction: row;
+    align-items: center;
 `;
