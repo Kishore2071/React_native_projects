@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render(){
     return (
       <Main>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
           <StatusBar hidden/>
           <Header>
             <Logo>Hotstar</Logo>
@@ -25,20 +25,31 @@ export default class App extends React.Component {
                   
                 )
               }
-              
 
             </ScrollView>
           </BigCardContainer>
+          <ContinueText>Continue watching</ContinueText>
         </ScrollView>
       </Main>
     );
   }
 }
+const ContinueText = styled.Text`
+  width: 200px;
+  height: 26px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
 
 const Main = styled.View`
   flex: 1;
   background-color: #E5E5E5;
-
 `;
 
 const Header = styled.View`
@@ -90,5 +101,5 @@ const BigCardData =[
     image:"https://frankeey.com/image/course/QfIUfKnqRifDfegQewlKTAZQiFWIIkwobqQ90YKL.jpg"
 
   },
-  
+
 ];
