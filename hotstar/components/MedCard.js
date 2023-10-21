@@ -5,7 +5,7 @@ class MedCard extends React.Component{
     render(){
         return(
             <Container>
-                <Image />
+                <Image source={{uri: this.props.image}}/>
             </Container>
         )
     }
@@ -14,6 +14,16 @@ class MedCard extends React.Component{
 
 export default MedCard;
 
-const Container = styled.View``;
+const Container = styled.View`
+    width: 249px;
+    height: 141px;
+    border-radius: 10px;
+    background-color: #FFF;
+    overflow: hidden;
+    margin: 5px;
+`;
 
-const Image = styled.Image``;
+const Image = styled.Image`
+    width: 100%;
+    height: 100%;
+`;

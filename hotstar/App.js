@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar,ScrollView} from 'react-native';
 import styled from "styled-components"
 import BigCard from './components/BigCard';
+import MedCard from './components/MedCard';
 
 export default class App extends React.Component {
   render(){
@@ -29,23 +30,27 @@ export default class App extends React.Component {
             </ScrollView>
           </BigCardContainer>
           <ContinueText>Continue watching</ContinueText>
+          <MedCardContainer>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              {
+                MedCardData.map((data,index) => (
+                  <MedCard key={index} image={data.image}/>
+                ))
+              }
+            </ScrollView>
+          </MedCardContainer>
+          
         </ScrollView>
       </Main>
     );
   }
 }
-const ContinueText = styled.Text`
-  width: 200px;
-  height: 26px;
-  flex-shrink: 0;
-  color: #000;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
 
+
+const MedCardContainer = styled.View`
+  margin-top: 20px; 
+  margin-left:
+`;
 
 const Main = styled.View`
   flex: 1;
@@ -103,3 +108,37 @@ const BigCardData =[
   },
 
 ];
+
+const MedCardData =[
+
+  {
+
+    image: "https://frankeey.com/image/course/KXineZ1NFtQnHFq07QI8ndjzxD5ouTGu4r9S4Zwg.jpg"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"
+
+  },
+  {
+
+    image:"https://frankeey.com/image/course/QfIUfKnqRifDfegQewlKTAZQiFWIIkwobqQ90YKL.jpg"
+
+  },
+
+];
+
+const ContinueText = styled.Text`
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #000;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+`;
