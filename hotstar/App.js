@@ -11,7 +11,7 @@ export default class App extends React.Component {
         <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
           <StatusBar hidden/>
           <Header>
-            <Logo>Hotstar</Logo>
+            <Logo/>
             <Profile />
           </Header>
           <BigCardContainer>
@@ -77,8 +77,10 @@ const Profile = styled.Image`
 const Logo = styled.Text`
   margin-top: 10px;
   margin-left: 10px;
-  color: black;
-  font-size: 25px;
+  width: 65px;
+  height 20px;
+  background: lightgray;
+  border-radius: 10px;
 `;
 
 const BigCardContainer = styled.View`
