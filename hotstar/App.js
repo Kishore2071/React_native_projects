@@ -1,8 +1,9 @@
 import React from 'react';
-import { StatusBar,ScrollView} from 'react-native';
-import styled from "styled-components"
+import { StatusBar,ScrollView, TouchableOpacity} from 'react-native';
+import styled from "styled-components";
 import BigCard from './components/BigCard';
 import MedCard from './components/MedCard';
+import {Ionicons} from "@expo/vector-icons";
 
 export default class App extends React.Component {
   render(){
@@ -11,6 +12,19 @@ export default class App extends React.Component {
         <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
           <StatusBar hidden/>
           <Header>
+            <TouchableOpacity
+              onPress={()=>{
+                console.log("Menu Icon");
+              }}
+              style={{
+                position: 'absolute',
+                top: 13,
+                left: 10,
+                zIndex: 100
+              }}
+            >
+              <Ionicons name="ios-menu" size={30} color="grey" />
+            </TouchableOpacity>
             <Logo/>
             <Profile />
           </Header>
@@ -75,10 +89,10 @@ const Profile = styled.Image`
 `;
 
 const Logo = styled.Text`
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 65px;
-  height 20px;
+  margin-top: 18px;
+  margin-left: 50px;
+  width: 85px;
+  height: 20px;
   background: lightgray;
   border-radius: 10px;
 `;
