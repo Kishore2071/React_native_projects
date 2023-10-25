@@ -1,14 +1,16 @@
 import React from 'react';
-import { StatusBar,ScrollView, TouchableOpacity} from 'react-native';
+import { StatusBar,ScrollView, TouchableOpacity } from 'react-native';
 import styled from "styled-components";
 import BigCard from './components/BigCard';
 import MedCard from './components/MedCard';
-import {Ionicons} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import Menu from './components/Menu';
 
 export default class App extends React.Component {
   render(){
     return (
       <Main>
+        <Menu/>
         <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
           <StatusBar hidden/>
           <Header>
@@ -64,7 +66,7 @@ export default class App extends React.Component {
 
 const MedCardContainer = styled.View`
   margin-top: 20px; 
-  margin-left:
+  margin-left: 10px;
 `;
 
 const Main = styled.View`
