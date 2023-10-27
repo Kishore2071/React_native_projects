@@ -55,7 +55,6 @@ export default class App extends React.Component {
               }
             </ScrollView>
           </MedCardContainer>
-          <ContinueText2>Top Picks for you</ContinueText2>
           
         </ScrollView>
       </Main>
@@ -150,15 +149,6 @@ const MedCardData =[
 ];
 
 const ContinueText = styled.Text`
-  margin-top: 20px;
-  margin-left: 20px;
-  color: #000;
-  font-size: 17px;
-  font-weight: 700;
-  text-transform: uppercase;
-`;
-
-const ContinueText2 = styled.Text`
   margin-top: 20px;
   margin-left: 20px;
   color: #000;
