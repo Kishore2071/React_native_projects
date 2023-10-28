@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { LinearGradient } from "expo-linear-gradient";
-import { Animated } from "react-native";
+import { Animated, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class Menu extends React.Component{
     
@@ -31,6 +32,11 @@ export default class Menu extends React.Component{
                     }
                     />  
                 </Cover>
+                <TouchableOpacity>
+                    <CloseView>
+                        <Ionicons name="ios-close" size={35} color="blue" />
+                    </CloseView>
+                </TouchableOpacity>
                 <Content />
             </AnimatedContainer>
         )
@@ -52,4 +58,13 @@ const Cover = styled.View`
 
 const Content = styled.View`
 
+`;
+
+const CloseView = styled.View`
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: white;
+    justify-content: center;
+    align-items: center;
 `;
