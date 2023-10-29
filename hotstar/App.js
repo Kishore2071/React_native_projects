@@ -6,7 +6,10 @@ import MedCard from './components/MedCard';
 import { Ionicons } from "@expo/vector-icons";
 import Menu from './components/Menu';
 
+
 export default class App extends React.Component {
+
+
   render(){
     return (
       <Main>
