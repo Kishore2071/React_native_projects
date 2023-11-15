@@ -17,6 +17,10 @@ export default class Menu extends React.Component{
         Animated.spring(this.state.top, { toValue: 0 }).start();
     
     }
+
+    closeMenu = () => {
+            Animated.spring(this.state.top,{toValue:900}).start();
+    }
     
     render(){
         return(
@@ -35,9 +39,11 @@ export default class Menu extends React.Component{
                 <TouchableOpacity
                     style={{
                         position: "absolute",
-                        top:120,
+                        top:127,
                         left:"50%",
+                        marginLeft: -22
                     }}
+                    onPress={this.closeMenu}
                 >
                     <CloseView>
                         <Ionicons name="ios-close" size={35} color="blue" />
