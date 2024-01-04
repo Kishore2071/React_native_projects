@@ -12,9 +12,9 @@ export default class Bigcard extends react.Component{
 }
 
 const Container = styled.View`
-    width: 338px;
-    height: 190px;
-    border-radius: 5px;
+    width: 290px;
+    height: 170px;
+    border-radius: 10px;
     background: white;
     overflow: hidden;
     margin-left: 10px;
