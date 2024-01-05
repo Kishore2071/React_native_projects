@@ -1,16 +1,32 @@
 import React from "react";
-import { StatusBar, ScrollView } from "react-native";
+import { StatusBar, ScrollView, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import Bigcard from "./components/Bigcard";
 import Medcard from "./components/Medcard";
+import Menu from "./components/Menu";
+import { Ionicons } from "@expo/vector-icons"
 
 export default class App extends React.Component {
   render() {
     return (
       <Main>
+        <Menu />
         <ScrollView showsVerticalScrollIndicator={false}>
           <StatusBar hidden />
           <Header>
+            <TouchableOpacity
+            style={{
+                  position: "absolute",
+                  top: 10,
+                  left: 10,
+                  zIndex: 100
+                }}
+            onPress={()=>{
+              console.log("Menu Icon");
+            }}
+            >
+              <Ionicons name="menu" color="black" size={35} />
+            </TouchableOpacity>
             <Logo>HOTSTAR</Logo>
             <Profile />
           </Header>
@@ -32,11 +48,11 @@ export default class App extends React.Component {
           <Medcardcontainer>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               {
-              Medcarddata.map(
-                (data,index)=>{
-                  return <Medcard key={index} image={data.image}/>;
-                }
-              )
+                Medcarddata.map(
+                  (data, index) => {
+                    return <Medcard key={index} image={data.image} />;
+                  }
+                )
               }
             </ScrollView>
           </Medcardcontainer>
@@ -58,7 +74,7 @@ const Header = styled.View`
 `;
 
 const Logo = styled.Text`
-  margin-left: 15px;
+  margin-left: 60px;
   color: black;
   margin-top: 10px;
   font-size: 25px;
