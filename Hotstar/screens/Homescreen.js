@@ -5,8 +5,22 @@ import Bigcard from "../components/Bigcard";
 import Medcard from "../components/Medcard";
 import Menu from "../components/Menu";
 import { Ionicons } from "@expo/vector-icons"
+import { connect } from "react-redux";
 
-export default class Homescreen extends React.Component {
+
+function mapStateToProps(state){
+  return { menu: state.menu }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    openMenu : () => dispatch({
+      type: "OPENMENU" 
+    })
+  }
+}
+
+class Homescreen extends React.Component {
   render() {
     return (
       <Main>
@@ -21,10 +35,7 @@ export default class Homescreen extends React.Component {
                   left: 10,
                   zIndex: 100
                 }}
-            onPress={()=>{
-              console.log("Menu Icon");
-              
-            }}
+            onPress={this.props.openMenu}
             >
               <Ionicons name="menu" color="black" size={35} />
             </TouchableOpacity>
@@ -62,6 +73,8 @@ export default class Homescreen extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Homescreen);
 
 const Main = styled.View`
   flex: 1;
