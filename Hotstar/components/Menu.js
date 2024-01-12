@@ -29,6 +29,10 @@ class Menu extends react.Component {
         this.menu(); 
     }
 
+    componentDidUpdate() {
+        this.menu(); 
+    }
+
     menu = ()=>{
         if(this.props.menu == "openmenu"){
             Animated.spring(this.state.top, { toValue: 0 }).start();
@@ -57,7 +61,7 @@ class Menu extends react.Component {
                         left:"50%",
                         marginLeft:-22
                     }}
-                    onPress={this.menu.openmenu}
+                    onPress={this.props.closemenu}
                 >
                     <Closeview>
                         <Ionicons name="ios-close" size={35} color="blue" />

@@ -20,9 +20,13 @@ function mapDispatchToProps(dispatch){
   }
 }
 
+
+
 class Homescreen extends React.Component {
   render() {
+    
     return (
+      
       <Main>
         <Menu />
         <ScrollView showsVerticalScrollIndicator={false}>
