@@ -1,10 +1,12 @@
 import react from "react";
 import styled from "styled-components";
 import { LinearGradient } from "expo-linear-gradient";
-import { Animated, TouchableOpacity } from "react-native";
+import { Animated, TouchableOpacity, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { connect } from "react-redux";
+import Menucard from "./Menucard";
 
+const screenheight = Dimensions.get("window").height
 
 function mapStateToProps(state){
     return { menu: state.menu }
@@ -22,7 +24,7 @@ function mapDispatchToProps(dispatch){
 class Menu extends react.Component {
     
     state = {
-        top: new Animated.Value(900)
+        top: new Animated.Value(screenheight)
     };
 
     componentDidMount() {
@@ -35,10 +37,10 @@ class Menu extends react.Component {
 
     menu = ()=>{
         if(this.props.menu == "openmenu"){
-            Animated.spring(this.state.top, { toValue: 0 }).start();
+            Animated.spring(this.state.top, { toValue: 150   }).start();
         }
         if(this.props.menu == "closemenu"){
-            Animated.spring(this.state.top,{toValue: 900}).start();
+            Animated.spring(this.state.top,{toValue: screenheight}).start();
         }
     }
 
@@ -53,6 +55,7 @@ class Menu extends react.Component {
                             height: "100%"
                         }}
                     />
+                    <Menutext>Menu</Menutext>
                 </Cover>
                 <TouchableOpacity
                     style={{
@@ -67,7 +70,10 @@ class Menu extends react.Component {
                         <Ionicons name="ios-close" size={35} color="blue" />
                     </Closeview>
                 </TouchableOpacity>
-                <Content />
+                <Content>
+                    <Menucard text="Account" icon="ios-settings" caption="Profile" />
+                    <Menucard text="Log Out" icon="ios-log-out" caption="See You Soon" />
+                </Content>
             </Animatedcontainer>
         );
     }
@@ -79,6 +85,8 @@ const Container = styled.View`
     width: 100%;
     height: 100%;
     background: white;
+    border-radius: 26px;
+    overflow: hidden;
 `;
 
 const Animatedcontainer = Animated.createAnimatedComponent(Container)
@@ -105,4 +113,20 @@ const Content = styled.View`
     height: 553px;
     background: #F0EEEE; */
 
+`;
+
+const Menutext = styled.Text`
+    position: absolute;
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    top:65;
+    left:42%;
+`;
+
+const Menubutton = styled.Text`
+    font-size: 25px;
+    color: #7918f5;
+    width: 100%;
+    height: 50px;
 `;
