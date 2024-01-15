@@ -37,10 +37,10 @@ class Menu extends react.Component {
 
     menu = ()=>{
         if(this.props.menu == "openmenu"){
-            Animated.spring(this.state.top, { toValue: 150   }).start();
+            Animated.spring(this.state.top, { toValue: 150 ,useNativeDriver: false,}).start();
         }
         if(this.props.menu == "closemenu"){
-            Animated.spring(this.state.top,{toValue: screenheight}).start();
+            Animated.spring(this.state.top,{toValue: screenheight,useNativeDriver: false,}).start();
         }
     }
 

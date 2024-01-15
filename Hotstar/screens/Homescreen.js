@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, ScrollView, TouchableOpacity } from "react-native";
+import { StatusBar, ScrollView, TouchableOpacity, Animated, Dimensions } from "react-native";
 import styled from "styled-components";
 import Bigcard from "../components/Bigcard";
 import Medcard from "../components/Medcard";
@@ -8,14 +8,16 @@ import { Ionicons } from "@expo/vector-icons"
 import { connect } from "react-redux";
 
 
-function mapStateToProps(state){
+const screenheight = Dimensions.get("window").height;
+
+function mapStateToProps(state) {
   return { menu: state.menu }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    openMenu : () => dispatch({
-      type: "OPENMENU" 
+function mapDispatchToProps(dispatch) {
+  return {
+    openMenu: () => dispatch({
+      type: "OPENMENU"
     })
   }
 }
@@ -23,67 +25,106 @@ function mapDispatchToProps(dispatch){
 
 
 class Homescreen extends React.Component {
+
+  state = {
+    left: 10,
+    top:new Animated.Value(screenheight),
+    opacity:new Animated.Value(0)
+  };
+
+  componentDidUpdate(){
+    this.blackscreen()
+  }
+
+  blackscreen(){
+    if(this.props.menu == "openmenu"){
+      Animated.timing(this.state.top,{toValue:0,duration:10}).start();
+      Animated.timing(this.state.opacity,{toValue:0.6,duration:500}).start();
+    }
+    if(this.props.menu == "closemenu"){
+      Animated.timing(this.state.top,{toValue:screenheight,duration:10}).start();
+      Animated.spring(this.state.opacity,{toValue:0}).start();
+
+    }
+  }
+
   render() {
-    
+
     return (
-      
-      <Main>
-        <Menu />
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <StatusBar hidden />
-          <Header>
-            <TouchableOpacity
-            style={{
+      <Root>
+        <Main>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <StatusBar hidden />
+            <Header>
+              <TouchableOpacity
+                style={{
                   position: "absolute",
                   top: 10,
                   left: 10,
                   zIndex: 100
                 }}
-            onPress={this.props.openMenu}
-            >
-              <Ionicons name="menu" color="black" size={35} />
-            </TouchableOpacity>
-            <Logo>HOTSTAR</Logo>
-            <Profile />
-          </Header>
-          <Bigcardcontainer>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              {
-                Bigcarddata.map
-                  (
+                onPress={this.props.openMenu}
+              >
+                <Ionicons name="menu" color="black" size={35} />
+              </TouchableOpacity>
+              <Logo>HOTSTAR</Logo>
+              <Profile />
+            </Header>
+            <Bigcardcontainer>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {
+                  Bigcarddata.map
+                    (
+                      (data, index) => {
+                        return <Bigcard key={index} image={data.image} />;
+                      }
+                    )
+                }
+              </ScrollView>
+            </Bigcardcontainer>
+            <Continuetext>
+              Continue Watching
+            </Continuetext>
+            <Medcardcontainer>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {
+                  Medcarddata.map(
                     (data, index) => {
-                      return <Bigcard key={index} image={data.image} />;
+                      return <Medcard key={index} image={data.image} />;
                     }
                   )
-              }
-            </ScrollView>
-          </Bigcardcontainer>
-          <Continuetext>
-            Continue Watching
-          </Continuetext>
-          <Medcardcontainer>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              {
-                Medcarddata.map(
-                  (data, index) => {
-                    return <Medcard key={index} image={data.image} />;
-                  }
-                )
-              }
-            </ScrollView>
-          </Medcardcontainer>
-        </ScrollView>
-      </Main>
+                }
+              </ScrollView>
+            </Medcardcontainer>
+          </ScrollView>
+        </Main>
+        <Animatedblack style={{ top: this.state.top, opacity: this.state.opacity }} /> 
+        <Menu />
+      </Root>
     );
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Homescreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Homescreen);
 
 const Main = styled.View`
   flex: 1;
   background-color: #e5e5e5;
 `;
+
+const Root = styled.View`
+  flex: 1;
+`;
+
+const Black = styled.View`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.6;
+`;
+
+const Animatedblack = Animated.createAnimatedComponent(Black);
 
 const Header = styled.View`
   width: 100%;
