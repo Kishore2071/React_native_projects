@@ -1,8 +1,8 @@
 import React from "react";
-// import { createstore } from "redux";
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import Homescreen from "./screens/Homescreen";
+import Bottomtab from "./Nav.js";
 
 const reducer = (state = { menu: "openmenu" }, action) => {
     
@@ -26,7 +26,7 @@ const database = createStore(reducer);
 
 const App = () => (
     <Provider store={database}>
-        <Homescreen />
+        <Bottomtab />
     </Provider>
 );
 
