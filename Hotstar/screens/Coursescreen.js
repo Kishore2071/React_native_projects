@@ -1,7 +1,7 @@
 import react from "react";
 import styled from "styled-components";
 
-class Videoscreen extends React.Component{
+class Coursescreen extends React.Component{
   render(){
     return(
       <Container>
@@ -11,7 +11,7 @@ class Videoscreen extends React.Component{
   }
 }
 
-export default Videoscreen;
+export default Coursescreen;
 
 const Container = styled.View`
   flex: 1;
