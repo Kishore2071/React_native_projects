@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import styled from "styled-components";
 
 class Videoscreen extends React.Component{
@@ -8,7 +8,7 @@ class Videoscreen extends React.Component{
         <Text>Videoscreen</Text>
       </Container>
     )
-  }
+  };
 }
 
 export default Videoscreen;

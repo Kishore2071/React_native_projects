@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import styled from "styled-components";
 import { LinearGradient } from "expo-linear-gradient";
 import { Animated, TouchableOpacity, Dimensions } from "react-native";
@@ -21,7 +21,7 @@ function mapDispatchToProps(dispatch){
     };
 }
 
-class Menu extends react.Component {
+class Menu extends React.Component {
     
     state = {
         top: new Animated.Value(screenheight)

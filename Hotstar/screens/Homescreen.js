@@ -26,6 +26,10 @@ function mapDispatchToProps(dispatch) {
 
 class Homescreen extends React.Component {
 
+  static navigatonoptions = {
+    Header: null
+  };
+
   state = {
     left: 10,
     top:new Animated.Value(screenheight),
