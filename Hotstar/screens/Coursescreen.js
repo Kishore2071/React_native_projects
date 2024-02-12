@@ -5,7 +5,7 @@ class Coursescreen extends React.Component{
   render(){
     return(
       <Container>
-        <Text>Videoscreen</Text>
+        <Text>Coursescreen</Text>
       </Container>
     )
   }

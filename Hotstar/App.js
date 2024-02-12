@@ -2,7 +2,7 @@ import React from "react";
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import Homescreen from "./screens/Homescreen";
-import Bottomtab from "./Nav.js";
+import Bottomtab from "./Nav";
 
 const reducer = (state = { menu: "openmenu" }, action) => {
     

@@ -1,11 +1,21 @@
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 class Videoscreen extends React.Component{
+
+  static NavigationBarOptions = {
+    header: null
+  }
+
   render(){
     return(
       <Container>
-        <Text>Videoscreen</Text>
+        <TouchableOpacity onPress={() => {
+          this.props.navigation.goback(); 
+        }}>
+          <Text>Videoscreen</Text>
+        </TouchableOpacity>
       </Container>
     )
   };
