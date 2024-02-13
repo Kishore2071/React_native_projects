@@ -95,7 +95,7 @@ class Homescreen extends React.Component {
                   Medcarddata.map(
                     (data, index) => {
                       <TouchableOpacity key={index} onpress={()=>{
-                        this.props.navigation.push("Video");
+                        this.props.navigation.push("Video",{video:data});
                       }}>
                         return <Medcard image={data.image} />;
                       </TouchableOpacity>
