@@ -26,9 +26,9 @@ function mapDispatchToProps(dispatch) {
 
 class Homescreen extends React.Component {
 
-  static navigatonoptions = {
-    Header: null
-  };
+  // static navigatonoptions = {
+  //   Header: null
+  // };
 
   state = {
     left: 10,
@@ -190,6 +190,7 @@ const Medcarddata = [
     image: require("../assets/images/horzontalimg/4.png")
   },
 ]
+
 const Continuetext = styled.Text`
   margin-top: 10px;
   margin-left: 15px;
