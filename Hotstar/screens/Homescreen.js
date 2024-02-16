@@ -6,6 +6,19 @@ import Medcard from "../components/Medcard";
 import Menu from "../components/Menu";
 import { Ionicons } from "@expo/vector-icons"
 import { connect } from "react-redux";
+import * as firebase from "firebase";  
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCyfJOcL18jfiPxZNUphkxSHSNa68LbiEE",
+  authDomain: "react-testing-7964e.firebaseapp.com",
+  databaseURL: "https://react-testing-7964e-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "react-testing-7964e",
+  storageBucket: "react-testing-7964e.appspot.com",
+  messagingSenderId: "916781081351",
+  appId: "1:916781081351:web:9d557e54e018399d179ba2"
+};
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 
 const screenheight = Dimensions.get("window").height;
@@ -26,9 +39,9 @@ function mapDispatchToProps(dispatch) {
 
 class Homescreen extends React.Component {
 
-  // static navigatonoptions = {
-  //   Header: null
-  // };
+  static navigatonoptions = {
+    Header: null
+  };
 
   state = {
     left: 10,
@@ -36,6 +49,29 @@ class Homescreen extends React.Component {
     opacity:new Animated.Value(0)
   };
 
+  componentDidMount(){
+    console.disableYellowBox=true;
+    this.Meddatabase = firebaseApp.database().ref().child("MedcardData");
+    this.getMedCardData(this.Meddatabase);
+  }
+
+  getMedCardData = (database) => {
+    this.database.on("value",snap => {
+      let MedcardFData = [];
+      snap.foreach(child => {
+        MedcardData.push({
+          title: child.val().title,
+          image: child.val().image,
+          video: child.val().video
+        });
+      });
+      this.setState({
+        MedcardData: MedcardFData
+      })
+      console.log(MedcardFData);
+    });
+  }
+  
   componentDidUpdate(){
     this.blackscreen()
   }
@@ -92,10 +128,14 @@ class Homescreen extends React.Component {
             <Medcardcontainer>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 {
-                  Medcarddata.map(
+                  this.state.Medcarddata.map(
                     (data, index) => {
                       <TouchableOpacity key={index} onpress={()=>{
-                        this.props.navigation.push("Video",{video:data});
+                        this.props.navigation.push("Video",{
+                          video: data,
+                          datas: Medcarddata,
+                          movieData: Moviecarddata
+                          });
                       }}>
                         return <Medcard image={data.image} />;
                       </TouchableOpacity>
@@ -104,6 +144,26 @@ class Homescreen extends React.Component {
                 }
               </ScrollView>
             </Medcardcontainer>
+            <Liketext>You May Also Like</Liketext>
+            <Moviecardcontainer>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {
+                  Moviecarddata.map(
+                    (data, index) => {
+                      <TouchableOpacity key={index} onpress={()=>{
+                        this.props.navigation.push("Video",{
+                          video: data,
+                          datas: Medcarddata,
+                          movieData: Moviecarddata
+                          });
+                      }}>
+                        return <Moviecard image={data.image} />;
+                      </TouchableOpacity>
+                    }
+                  )
+                }
+              </ScrollView>
+            </Moviecardcontainer>
           </ScrollView>
         </Main>
         <Animatedblack style={{ top: this.state.top, opacity: this.state.opacity }} /> 
@@ -163,31 +223,58 @@ const Bigcardcontainer = styled.View`
 
 const Bigcarddata = [
   {
-    image: "https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png"
+    image: "https://frankeey.com/image/course/qWuNiXOh7KMO0sxLSBEQIUX4T46v4oKAdsbA6DWt.png",
+    title: "Bigg Boss Season 3"
   },
   {
-    image: "https://frankeey.com/image/course/Bi6qLdjQeyRtu6LKj2MmbXbHUahni9nyx7lum2Ud.jpg"
+    image: "https://frankeey.com/image/course/Bi6qLdjQeyRtu6LKj2MmbXbHUahni9nyx7lum2Ud.jpg",
+    title: "2"
   },
   {
-    image: "https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg"
+    image: "https://frankeey.com/image/course/D4TH2shDtqF4wwtQFsEkd998nXqOr61LvPhraiQ7.jpg",
+    title: "3"
   },
   {
-    image: "https://frankeey.com/image/course/DnWEvkqWt5YF1drI31VsX2BMHd8uukyxDaSvgY8B.png"
+    image: "https://frankeey.com/image/course/DnWEvkqWt5YF1drI31VsX2BMHd8uukyxDaSvgY8B.png",
+    title: "4"
   },
 ]
 
 const Medcarddata = [
   {
-    image: require("../assets/images/horzontalimg/1.png")
+    image: require("../assets/images/horzontalimg/1.png"),
+    title: "Bigg Boss Season 3"
   },
   {
-    image: require("../assets/images/horzontalimg/2.png")
+    image: require("../assets/images/horzontalimg/2.png"),
+    title: "Bigg Boss Season 3"
   },
   {
-    image: require("../assets/images/horzontalimg/3.png")
+    image: require("../assets/images/horzontalimg/3.png"),
+    title: "Bigg Boss Season 3"
   },
   {
-    image: require("../assets/images/horzontalimg/4.png")
+    image: require("../assets/images/horzontalimg/4.png"),
+    title: "Bigg Boss Season 3"
+  },
+]
+
+const Moviecarddata = [
+  {
+    image: require("../assets/images/horzontalimg/1.png"),
+    title: "Bigg Boss Season 3"
+  },
+  {
+    image: require("../assets/images/horzontalimg/2.png"),
+    title: "Bigg Boss Season 3"
+  },
+  {
+    image: require("../assets/images/horzontalimg/3.png"),
+    title: "Bigg Boss Season 3"
+  },
+  {
+    image: require("../assets/images/horzontalimg/4.png"),
+    title: "Bigg Boss Season 3"
   },
 ]
 
@@ -201,7 +288,24 @@ const Continuetext = styled.Text`
   font-size: 21px;
   font-weight: 700;
 `;
+const Liketext = styled.Text`
+  margin-top: 10px;
+  margin-left: 15px;
+  width: 200px;
+  height: 26px;
+  flex-shrink: 0;
+  color: #000;
+  font-size: 21px;
+  font-weight: 700;
+`;
 
 const Medcardcontainer = styled.View`
   margin-top: 20px;
+  margin-left: 5px;
+`;
+
+const Moviecardcontainer = styled.View`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 5px;
 `;
